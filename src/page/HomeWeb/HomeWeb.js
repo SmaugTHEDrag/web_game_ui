@@ -6,7 +6,7 @@ import giphy2 from './images/giphy2.gif';
 import meme from './images/Gif.gif';
 import { useAppSelector } from "../../container/store";
 import { logout } from "../../page/utils/common";
-
+import icon from './images/icon.jpg';
 function HomeWeb() {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -21,7 +21,7 @@ function HomeWeb() {
     <div>
       <nav>
         <div className="logo">
-          <img src={giphy1} alt="Logo Image" />
+          <img src={icon} alt="Logo Image" />
         </div>
         <div className="hamburger" onClick={toggleNav}>
           <div className="line1"></div>

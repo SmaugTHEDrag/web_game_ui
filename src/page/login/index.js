@@ -20,7 +20,7 @@ const Container = styled("div")`
   }
 
   button {
-    background-color: #04aa6d;
+    background-color: aqua;
     color: black;
     padding: 14px 20px;
     margin: 8px 0;
@@ -74,7 +74,7 @@ const Container = styled("div")`
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background: aqua,
+    background-color:blue;
     background: aqua,
     padding-top: 60px;
   }

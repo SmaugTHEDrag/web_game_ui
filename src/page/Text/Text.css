@@ -133,6 +133,7 @@ h2 {
   background-repeat: no-repeat;
   background-size: 80%;
   animation: animate 3s linear infinite;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(255, 255, 255, 0);
   text-align: center;
 }
@@ -148,6 +149,7 @@ h2 {
 
 h3 {
   background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSid5hgUUpgL6Qz1jSemiPhgeoKBDj-dAngIUqMSu1vFsvibb52SFIlND_zlFTL4QHRCNU&usqp=CAU);
+  -webkit-background-clip: text;
   background-size: contain;
   width: 100%;
   text-align: center;
@@ -172,4 +174,12 @@ h3 {
   animation: waviy 1s infinite;
   animation-delay: calc(.1s * var(--i));
 
+}
+@keyframes waviy {
+  0%,40%,100% {
+    transform: translateY(0)
+  }
+  20% {
+    transform: translateY(-20px)
+  }
 }

@@ -24,7 +24,7 @@ const ModalContainer = styled("div")`
 
   /* Set a style for all buttons */
   button {
-    background-color: #04aa6d;
+    background-color: blue;
     color: white;
     padding: 14px 10px;
     margin: 8px 0;
@@ -246,7 +246,7 @@ const CreateModal = ({ isOpen, setOpen, isActive }) => {
             />
 
             <label for="author">
-              <b>Tác giả</b>
+              <b className="create">Tác giả</b>
             </label>
             <input
               className={bookData.author.isError && "invalid"}
@@ -261,7 +261,7 @@ const CreateModal = ({ isOpen, setOpen, isActive }) => {
             />
 
             <label for="parts">
-              <b>Số chương</b>
+              <b className="create">Số chương</b>
             </label>
             <input
               className={bookData.parts.isError && "invalid"}
@@ -274,7 +274,7 @@ const CreateModal = ({ isOpen, setOpen, isActive }) => {
             />
 
             <label for="category">
-              <b>Thể loại</b>
+              <b className="create">Thể loại</b>
             </label>
             <input
               className={bookData.category.isError && "invalid"}
@@ -285,7 +285,7 @@ const CreateModal = ({ isOpen, setOpen, isActive }) => {
               onBlur={checkBookDataValid}
               onFocus={onFocusHandler}
             />
-            <button onClick={handlerSubmit}>Tạo mới</button>
+            <button onClick={handlerSubmit} className="create">CREATE NEW</button>
           </div>
         </div>
       </div>

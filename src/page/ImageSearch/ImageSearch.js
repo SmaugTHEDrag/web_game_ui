@@ -3,6 +3,7 @@ import './ImageSearch.css'; // Import your CSS file
 import { Link } from 'react-router-dom';
 import { useAppSelector } from "../../container/store";
 import { logout } from "../../page/utils/common";
+import icon from './icon.jpg';
 function ImageSearch() {
     const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -54,7 +55,7 @@ function ImageSearch() {
       <div>
                     <nav>
         <div className="logo">
-          <img src="logo and gif/form.jpg" alt="Logo Image" />
+        <img src={icon} alt="Logo Image" />
         </div>
         <div className="hamburger" onClick={toggleNav}>
           <div className="line1"></div>
