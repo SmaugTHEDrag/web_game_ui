@@ -58,7 +58,7 @@ function HomeWeb() {
     <div className="Main" style={{ flexDirection: 'column' }}>
       <div className="clearfix">
         <img className="img1" src={giphy1} alt="shape animation" />
-        <h1 className="p1">SHAPE ANIMATION</h1>
+        <h1 className="p1">IMAGES SEARCH</h1>
       </div>
 
       <div className="clearfix">
