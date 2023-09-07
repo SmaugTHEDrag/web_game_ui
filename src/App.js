@@ -5,7 +5,9 @@ import LoginForm from './components/Login/LoginForm';
 import SignupForm from './components/Signup/Signup';
 import Text from './components/Text/Text';
 import ImageSearch from './components/ImageSearch/ImageSearch';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 function App() {
   return (
     <Router>
