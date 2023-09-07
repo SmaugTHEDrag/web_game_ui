@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './ImageSearch.css'; // Import your CSS file
 import { Link } from 'react-router-dom';
-
+import { useAppSelector } from "../../container/store";
+import { logout } from "../../page/utils/common";
 function ImageSearch() {
     const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -48,7 +49,7 @@ function ImageSearch() {
       setPage(page + 1);
       searchImages();
     };
-  
+    const { isAuth, data: userData } = useAppSelector((state) => state.authReducer);
     return (
       <div>
                     <nav>
@@ -62,18 +63,19 @@ function ImageSearch() {
         </div>
         <ul className={navLinksClassName}>
           <li><a href="/home">HOME</a></li>
-          <li><Link to='/Text'>TEXT ANIMATION</Link></li>
-          <li><Link to='/ImageSearch'>Image Search</Link></li>
-          <li><a href="/contact">MEME</a></li>
-          <li><Link to='/private'>PRIVATE</Link></li>
+          {isAuth && <Link to="/Text" >TEXT ANIMATION</Link>}
+          {isAuth && <Link to="/ImageSearch" >Image Search</Link>}
+          {isAuth && <Link to="/MEME" >MEME</Link>}
+          {isAuth && <Link to="/books-management" >Quản lý sách</Link>}
           <li>
-            <button className="login">
-              <Link to='/Login'>Login</Link>
+          <button className="login">
+            {!isAuth && <Link to="/sign-in" >Login </Link>}
+            {isAuth && <Link to="/sign-in" onClick={logout}>Logout</Link>}
             </button>
           </li>
           <li>
             <button className="join">
-            <Link to='/Signup'>Signup</Link>
+            {!isAuth &&<Link to='/Signup'>Signup</Link>}
             </button>
           </li>
         </ul>

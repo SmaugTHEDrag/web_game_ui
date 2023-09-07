@@ -12,7 +12,7 @@ function FrontWeb() {
       {/* Create the button */}
       <div className="wrap">
       <div className="wrap">
-        <Link to="/home"> {/* Use Link to navigate */}
+        <Link to="/Home"> {/* Use Link to navigate */}
           <button className="button">Join our web</button>
         </Link>
       </div>
