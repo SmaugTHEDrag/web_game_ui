@@ -24,7 +24,7 @@ function Text() {
           <li><Link to='/Text'>TEXT ANIMATION</Link></li>
           <li><Link to='/ImageSearch'>Image Search</Link></li>
           <li><a href="/contact">MEME</a></li>
-          <li><a href="/contact">Contact Us</a></li>
+          <li><Link to='/private'>PRIVATE</Link></li>
           <li>
             <button className="login">
               <Link to='/Login'>Login</Link>
