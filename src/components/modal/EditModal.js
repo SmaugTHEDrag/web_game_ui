@@ -24,8 +24,9 @@ const ModalContainer = styled("div")`
 
   /* Set a style for all buttons */
   button {
-    background-color: #04aa6d;
+    background-color: blue;
     color: white;
+    padding: 14px 10px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
