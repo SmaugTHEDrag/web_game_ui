@@ -53,7 +53,7 @@ function ImageSearch() {
     const { isAuth, data: userData } = useAppSelector((state) => state.authReducer);
     return (
       <div>
-                    <nav>
+      <nav>
         <div className="logo">
         <img src={icon} alt="Logo Image" />
         </div>
@@ -66,8 +66,8 @@ function ImageSearch() {
           <li><a href="/home">HOME</a></li>
           {isAuth && <Link to="/Text" >TEXT ANIMATION</Link>}
           {isAuth && <Link to="/ImageSearch" >Image Search</Link>}
-          {isAuth && <Link to="/MEME" >MEME</Link>}
-          {isAuth && <Link to="/books-management" >Quản lý sách</Link>}
+          {isAuth && <Link to="/MemeGenerator" >MEME</Link>}
+          {isAuth && <Link to="/memes-management" >Favorite meme</Link>}
           <li>
           <button className="login">
             {!isAuth && <Link to="/sign-in" >Login </Link>}
