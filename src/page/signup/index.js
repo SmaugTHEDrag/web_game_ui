@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { styled } from "styled-components";
-import { login } from "../../container/Auth/actions";
+import * as React from "react";
+import { useHistory } from "react-router-dom";
 import { useAppSelector } from "../../container/store";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import Cookies from "js-cookie"
+import { signUpApi } from "../../api/Auth";
+import { styled } from "styled-components";
 import { Link } from 'react-router-dom';
 const Container = styled("div")`
   input[type="text"],
@@ -97,48 +95,113 @@ const Container = styled("div")`
   }
 `;
 
-
-const Login = () => {
-  const dispatch = useDispatch();
+const SignUp = () => {
   const isAuth = useAppSelector((state) => state.authReducer.isAuth);
   const history = useHistory();
 
-  const [authData, _] = useState({
+  const [authData, setAuthData] = React.useState({
     username: {
       value: "",
       isError: false,
-      errMessage: "Enter username",
+      errMessage: "Tên đăng nhập cần ít nhất 1 ký tự",
     },
     password: {
       value: "",
       isError: false,
-      errMessage: "Password must be at least 6 characters",
+      errMessage: "Mật khẩu cần ít nhất 1 ký tự",
     },
+    email: {
+        value: "",
+        isError: false,
+        errMessage: "Họ tên cần ít nhất 1 ký tự",
+    }
   });
 
-  const handleSubmit = (event) => {
+  React.useEffect(() => {
+    if (isAuth) {
+      history.push("/");
+    }
+  }, [isAuth, history]);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
     const username = data.get("username");
     const password = data.get("password");
-    if (username !== "" && password !== "") {
-      Cookies.set('username', username);
-      console.log('login')
-      dispatch(
-        login({
-          username: data.get("username"),
-          password: data.get("password"),
-        })
-      );
+    const email = data.get("email");
+
+    if (username !== "" && password !== "" && email !== "") {
+        try{
+            const response = await signUpApi({email, username,password})
+            if(response.result === "ok"){
+                alert("Success!")
+                setAuthData({
+                    username: {
+                      value: "",
+                      isError: false,
+                      errMessage: "Tên đăng nhập cần ít nhất 1 ký tự",
+                    },
+                    password: {
+                      value: "",
+                      isError: false,
+                      errMessage: "Mật khẩu cần ít nhất 1 ký tự",
+                    },
+                    email: {
+                        value: "",
+                        isError: false,
+                        errMessage: "Họ tên cần ít nhất 1 ký tự",
+                    }
+                  })
+                return;
+            }
+        }catch(error){
+            if(error.response.data){
+                alert(error.response.data.error)
+                console.log(error)
+                return;
+            }
+        }
     }
   };
 
-  useEffect(() => {
-    if (isAuth) {
-      history.push("/Home");
+  const onChangeInputHandler = (event) => {
+    const { name, value } = event.target;
+    const newAuthData = {
+      ...authData,
+      [name]: {
+        ...authData[name],
+        value: value,
+      },
+    };
+    setAuthData(newAuthData);
+  };
+
+  const checkAuthDataValid = (event) => {
+    const { name, value } = event.target;
+    if (value === "") {
+      const newAuthData = {
+        ...authData,
+        [name]: {
+          ...authData[name],
+          isError: true,
+        },
+      };
+      setAuthData(newAuthData);
     }
-  }, [isAuth, history]);
+  };
+
+  const onFocusHandler = (event) => {
+    const { name } = event.target;
+    const newAuthData = {
+      ...authData,
+      [name]: {
+        ...authData[name],
+        isError: false,
+      },
+    };
+    setAuthData(newAuthData);
+  };
 
   return (
     <Container className="modal">
@@ -161,7 +224,19 @@ const Login = () => {
             }
             onInput={(F) => F.target.setCustomValidity("")}
           />
-
+          <label htmlFor="email">
+            <b id="password">Email</b>
+          </label>
+          <input
+            type="text"
+            placeholder="Nhập email"
+            name="email"
+            required
+            onInvalid={(e) =>
+              e.target.setCustomValidity(authData.email.errMessage)
+            }
+            onInput={(F) => F.target.setCustomValidity("")}
+          />
           <label htmlFor="password">
             <b id="password">Password</b>
           </label>
@@ -175,13 +250,12 @@ const Login = () => {
             }
             onInput={(F) => F.target.setCustomValidity("")}
           />
-
-          <button type="submit">LOGIN</button>
+          <button type="submit">SIGNUP</button>
+          <Link to ='/sign-in' id="form-move">Already have account or move back?</Link>
         </div>
-        <Link to ='/sign-up' id="form-move">Don't have account ?</Link>
       </form>
     </Container>
   );
 };
 
-export default Login;
+export default SignUp;

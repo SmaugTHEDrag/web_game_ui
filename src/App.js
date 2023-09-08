@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Layout from "./components/Layout";
 import Login from "./page/login";
+import SignUp from "./page/signup";
 import BooksManagement from "./page/booksManagement";
 import HomeWeb from "./page/HomeWeb/HomeWeb"
 import FrontWeb from "./page/Frontweb/Frontweb";
@@ -30,6 +31,7 @@ function App() {
         <Switch>
           <Layout>
           <Route path="/sign-in" component={Login} />
+          <Route path="/sign-up" component={SignUp} />
           <Route path="/Home" component={HomeWeb} />
           <PrivateRoute path="/Text" component={Text} isAuthenticated={isAuth}/>
           <PrivateRoute path="/ImageSearch" component={ImageSearch} isAuthenticated={isAuth}/>

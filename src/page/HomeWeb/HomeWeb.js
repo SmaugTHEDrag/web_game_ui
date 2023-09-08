@@ -42,7 +42,7 @@ function HomeWeb() {
           </li>
           <li>
             <button className="join">
-            {!isAuth &&<Link to='/Signup'>Signup</Link>}
+            {!isAuth &&<Link to='/sign-up'>Signup</Link>}
             </button>
           </li>
         </ul>
