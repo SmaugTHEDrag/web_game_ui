@@ -229,11 +229,11 @@ const EditModal = ({ book, setOpen, isActive }) => {
         <div class="modal-content animate">
           <div class="container">
             <label for="title">
-              <b>Tiêu đề</b>
+              <b>Name</b>
             </label>
             <input
               type="text"
-              placeholder="Nhập tiêu đề"
+              placeholder="Enter title"
               name="title"
               // required
               // onInvalid={(e)=>{e.target.setCustomValidity("error msg:  Please enter your first name")}}
@@ -246,11 +246,11 @@ const EditModal = ({ book, setOpen, isActive }) => {
             />
 
             <label for="author">
-              <b>Tác giả</b>
+              <b>Author</b>
             </label>
             <input
               type="text"
-              placeholder="Nhập tên tác giả"
+              placeholder="Enter author"
               name="author"
               onChange={onChangeInputHandler}
               value={bookData.author.value}
@@ -259,15 +259,15 @@ const EditModal = ({ book, setOpen, isActive }) => {
               onFocus={onFocusHandler}
               // required
               // onInvalid={(e) =>
-              //   e.target.setCustomValidity('Nhập tác giả')
+              //   e.target.setCustomValidity('Enter author')
               // }
             />
 
             <label for="parts">
-              <b>Số chương</b>
+              <b>Top rank</b>
             </label>
             <input
-              placeholder="Nhập tên số chương"
+              placeholder="Top rank"
               name="parts"
               type="number"
               onChange={onChangeInputHandler}
@@ -277,16 +277,16 @@ const EditModal = ({ book, setOpen, isActive }) => {
               onFocus={onFocusHandler}
               // required
               // onInvalid={(e) =>
-              //   e.target.setCustomValidity('Nhập số chương')
+              //   e.target.setCustomValidity('Top rank')
               // }
             />
 
             <label for="category">
-              <b>Thể loại</b>
+              <b>Category</b>
             </label>
             <input
               type="number"
-              placeholder="Nhập tên thể loại"
+              placeholder="Enter category"
               name="category"
               onChange={onChangeInputHandler}
               value={bookData.category.value}
@@ -295,10 +295,10 @@ const EditModal = ({ book, setOpen, isActive }) => {
               onFocus={onFocusHandler}
               // required
               // onInvalid={(e) =>
-              //   e.target.setCustomValidity('Nhập thể loại')
+              //   e.target.setCustomValidity('Enter category')
               // }
             />
-            <button onClick={handlerSubmit}>Sửa</button>
+            <button onClick={handlerSubmit}>Edit</button>
           </div>
         </div>
       </div>

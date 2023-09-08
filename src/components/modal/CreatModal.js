@@ -235,7 +235,7 @@ const CreateModal = ({ isOpen, setOpen, isActive }) => {
             <input
               className={bookData.title.isError && "invalid"}
               type="text"
-              placeholder="Nhập tiêu đề"
+              placeholder="Enter title"
               name="title"
               required
               value={bookData.title.value}
@@ -251,7 +251,7 @@ const CreateModal = ({ isOpen, setOpen, isActive }) => {
             <input
               className={bookData.author.isError && "invalid"}
               type="text"
-              placeholder="Nhập tên tác giả"
+              placeholder="Enter author"
               name="author"
               onChange={onChangeInputHandler}
               required
@@ -265,7 +265,7 @@ const CreateModal = ({ isOpen, setOpen, isActive }) => {
             </label>
             <input
               className={bookData.parts.isError && "invalid"}
-              placeholder="Nhập tên số chương"
+              placeholder="Top rank"
               name="parts"
               type="number"
               onChange={onChangeInputHandler}
@@ -279,7 +279,7 @@ const CreateModal = ({ isOpen, setOpen, isActive }) => {
             <input
               className={bookData.category.isError && "invalid"}
               type="number"
-              placeholder="Nhập tên thể loại"
+              placeholder="Enter category"
               name="category"
               onChange={onChangeInputHandler}
               onBlur={checkBookDataValid}

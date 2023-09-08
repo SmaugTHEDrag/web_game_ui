@@ -157,8 +157,8 @@ const DeleteModal = ({ setOpen, isActive, book }) => {
       >
         <div class="modal-content animate">
           <div class="container">
-            Xóa sách: {book?.title}
-            <button type="submit" onClick={handlerDeleteSubmit}>Xóa</button> 
+            DELETE MEME: {book?.title}
+            <button type="submit" onClick={handlerDeleteSubmit}>DELETE</button> 
 
           </div>
         </div>
