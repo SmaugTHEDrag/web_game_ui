@@ -28,8 +28,8 @@ function Text() {
           <li><a href="/home">HOME</a></li>
           {isAuth && <Link to="/Text" >TEXT ANIMATION</Link>}
           {isAuth && <Link to="/ImageSearch" >Image Search</Link>}
-          {isAuth && <Link to="/MEME" >MEME</Link>}
-          {isAuth && <Link to="/books-management" >Quản lý sách</Link>}
+          {isAuth && <Link to="/MemeGenerator" >MEME</Link>}
+          {isAuth && <Link to="/memes-management" >Favorite meme</Link>}
           <li>
           <button className="login">
             {!isAuth && <Link to="/sign-in" >Login </Link>}

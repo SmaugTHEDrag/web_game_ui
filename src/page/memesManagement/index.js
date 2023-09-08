@@ -3,6 +3,7 @@ import ListBooks from "../../components/ListBooks";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getBook } from "../../container/Book/actions";
+import { Link } from 'react-router-dom';
 
 const BooksContainer = styled("div")`
   // display: flex;
@@ -11,7 +12,7 @@ const BooksContainer = styled("div")`
   min-height: 750px;
 `;
 
-const BooksManagement = () => {
+const MemesManagement = () => {
   const dispatch = useDispatch();
   const { pages } = useSelector((state) => state.bookReducer);
 
@@ -24,4 +25,4 @@ const BooksManagement = () => {
   </BooksContainer>;
 };
 
-export default BooksManagement;
+export default MemesManagement;

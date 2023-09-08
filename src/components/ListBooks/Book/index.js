@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import { timeSince } from "../../../page/utils/timeSince";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import React, { useState, useEffect } from "react";
 
 const BookContainer = styled("div")`
   margin-bottom: 20px;
@@ -99,8 +100,15 @@ const BookContainer = styled("div")`
 
 const Book = (props) => {
   const { data, onDelete, onEdit } = props;
-  const thumb =
-    "https://truyenaudiocv.org/uploads/manga/nguoi-tai-dau-pha-viet-nhat-ky-nu-chinh-toan-bo-mong/cover/cover_thumb.jpg";
+  const [thumb, setThumb] = useState("https://meme-api.com/gimme");
+
+  useEffect(() => {
+    fetch("https://meme-api.com/gimme")
+      .then((response) => response.json())
+      .then((data) => {
+        setThumb(data.url);
+      });
+  }, []);
   return (
     <BookContainer container spacing={2} onClick={() => {}}>
       <div className="grid-item">
@@ -110,10 +118,10 @@ const Book = (props) => {
       </div>
       <div className="grid-item">
         <h2 className="book-title">{data.title}</h2>
-        <p className="author-text">Tác giả: {data.author}</p>
+        <p className="author-text">Author: {data.author}</p>
       </div>
       <div className="grid-item">
-        <p className="part-number">{data.parts} tập</p>
+        <p className="part-number">top {data.parts}</p>
       </div>
       <div className="grid-item text-right">
         <p className="time">{timeSince(data.updated_at)}</p>

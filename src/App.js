@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Layout from "./components/Layout";
 import Login from "./page/login";
 import SignUp from "./page/signup";
-import BooksManagement from "./page/booksManagement";
+import MemesManagement from "./page/memesManagement";
 import HomeWeb from "./page/HomeWeb/HomeWeb"
 import FrontWeb from "./page/Frontweb/Frontweb";
 import { useEffect, useState } from "react";
@@ -13,6 +13,7 @@ import Cookies from "js-cookie"
 import Loading from "./components/modal/Loading";
 import Text from "./page/Text/Text";
 import ImageSearch from "./page/ImageSearch/ImageSearch";
+import MemeGenerator from "./page/MemeGenerator/MemeGenerator";
 function App() {
   const isAuth = useAppSelector((state) => state.authReducer.isAuth);
   const isLoading = useAppSelector((state) => state.loadingReducer.isLoading);
@@ -35,9 +36,10 @@ function App() {
           <Route path="/Home" component={HomeWeb} />
           <PrivateRoute path="/Text" component={Text} isAuthenticated={isAuth}/>
           <PrivateRoute path="/ImageSearch" component={ImageSearch} isAuthenticated={isAuth}/>
+          <PrivateRoute path="/MemeGenerator" component={MemeGenerator} isAuthenticated={isAuth}/>
           <PrivateRoute
-            path="/books-management"
-            component={BooksManagement}
+            path="/memes-management"
+            component={MemesManagement}
             isAuthenticated={isAuth}
           />
           <Route path="/" component={FrontWeb} exact />

@@ -1,13 +1,35 @@
-import React, { useState } from 'react';
-import './HomeWeb.css'; // Import the CSS file
-import { Link } from 'react-router-dom';
-import giphy1 from './images/giphy.gif';
-import giphy2 from './images/giphy2.gif';
-import meme from './images/Gif.gif';
+import React, { useState, useEffect } from "react";
+import "./style.css"; // Import your CSS file
 import { useAppSelector } from "../../container/store";
 import { logout } from "../../page/utils/common";
-import icon from './images/icon.jpg';
-function HomeWeb() {
+import icon from './icon.jpg';
+import { Link } from 'react-router-dom';
+function MemeGenerator() {
+  const [memeData, setMemeData] = useState({
+    url: "",
+    title: "Loading...",
+    author: "",
+  });
+
+  useEffect(() => {
+    generateMeme();
+  }, []);
+
+  const updateDetails = (url, title, author) => {
+    setMemeData({
+      url,
+      title,
+      author: `Meme by: ${author}`,
+    });
+  };
+
+  const generateMeme = () => {
+    fetch("https://meme-api.com/gimme/wholesomememes")
+      .then((response) => response.json())
+      .then((data) => {
+        updateDetails(data.url, data.title, data.author);
+      });
+  };
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const toggleNav = () => {
@@ -19,7 +41,7 @@ function HomeWeb() {
   
   return (
     <div>
-      <nav>
+            <nav>
         <div className="logo">
           <img src={icon} alt="Logo Image" />
         </div>
@@ -47,40 +69,16 @@ function HomeWeb() {
           </li>
         </ul>
       </nav>
-
-      <br /><br /><br /><br /><br /><br />
-      <div className="containers">
-        <p>Hello 👋 We're</p>
-        <section className="animation">
-          <div className="first"><div>PTN LOR and BIMPORO</div></div>
-          <div className="second"><div>University students</div></div>
-          <div className="third"><div>DOING WEB GAME</div></div>
-        </section>
-      </div>
-    <div className="Main" style={{ flexDirection: 'column' }}>
-      <div className="clearfix">
-        <img className="img1" src={giphy1} alt="shape animation" />
-        <h1 className="p1">IMAGES SEARCH</h1>
-      </div>
-
-      <div className="clearfix">
-        <img className="img2" src={giphy2} alt="text animation" />
-        <div className="font-effect-fire">
-          <h1 className="p2">ALSO TEXT ANIMATION</h1>
-        </div>
-        <hr />
-      </div>
-      <div className="clearfix">
-        <img className="img1" src={meme} alt="MEME" />
-        <br />
-        <h1 className="p1">AND MEME TOO</h1>
-        <hr />
+      <div className="meme-generator">
+        <button className="generate-meme-btn" onClick={generateMeme}>
+          Generate Meme
+        </button>
+        <h4 className="meme-title">{memeData.title}</h4>
+        <img src={memeData.url} alt="" />
+        <div className="meme-author">{memeData.author}</div>
       </div>
     </div>
-        {/* Add the rest of your web.html content here */}
-        
-      </div>
   );
 }
 
-export default HomeWeb;
+export default MemeGenerator;
