@@ -230,7 +230,7 @@ const CreateModal = ({ isOpen, setOpen, isActive }) => {
         <div class="modal-content animate">
           <div class="container">
             <label for="title">
-              <b>Tiêu đề</b>
+              <b>Name</b>
             </label>
             <input
               className={bookData.title.isError && "invalid"}
@@ -246,7 +246,7 @@ const CreateModal = ({ isOpen, setOpen, isActive }) => {
             />
 
             <label for="author">
-              <b className="create">Tác giả</b>
+              <b className="create">Author</b>
             </label>
             <input
               className={bookData.author.isError && "invalid"}
@@ -261,7 +261,7 @@ const CreateModal = ({ isOpen, setOpen, isActive }) => {
             />
 
             <label for="parts">
-              <b className="create">Số chương</b>
+              <b className="create">Top rank</b>
             </label>
             <input
               className={bookData.parts.isError && "invalid"}
@@ -274,7 +274,7 @@ const CreateModal = ({ isOpen, setOpen, isActive }) => {
             />
 
             <label for="category">
-              <b className="create">Thể loại</b>
+              <b className="create">Category</b>
             </label>
             <input
               className={bookData.category.isError && "invalid"}
