@@ -1,13 +1,13 @@
 .meme-generator {
-    padding-top: 7%;
+    padding-top: 10%;
     font-family: "Roboto", sans-serif;
     text-align: center;
   }
   
   .meme-generator img {
     height: 500px;
-    object-fit: cover;
-    width: 600px;
+    object-fit: auto;
+    width: auto;
   }
   
   .meme-generator .generate-meme-btn {
